@@ -82,7 +82,6 @@ public class UIManagerInFlappyPlayerScene : MonoBehaviour
     }
     public void OnClickBackToMainSceneMutton()
     {
-        GameManager.Instance.isSceneChanged = true;
         SceneManager.LoadScene("MainScene");
     }
 }

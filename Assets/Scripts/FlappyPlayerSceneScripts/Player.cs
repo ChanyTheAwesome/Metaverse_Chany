@@ -6,7 +6,8 @@ public class Player : MonoBehaviour
 {
     Animator animator;
     Rigidbody2D _rigidbody;
-
+    public GameObject Adam;
+    public GameObject Amelia;
     public float flapForce = 6.0f;
     public float forwardSpeed = 3f;
     public bool isDead = false;
@@ -30,6 +31,14 @@ public class Player : MonoBehaviour
         if(_rigidbody == null)
         {
             Debug.LogError("No Rigidbody");
+        }
+        if(GameManager.Instance.CharacterIndex == 0)
+        {
+            Amelia.SetActive(false);
+        }
+        else if(GameManager.Instance.CharacterIndex == 1)
+        {
+            Adam.SetActive(false);
         }
     }
 

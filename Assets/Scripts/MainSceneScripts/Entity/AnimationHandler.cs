@@ -10,7 +10,6 @@ public class AnimationHandler : MonoBehaviour
     private static readonly int SpecialIdle = Animator.StringToHash("SpecialIdle");
 
     protected Animator animator;
-    private Coroutine specialIdle;
     private int lastAnimInteger = 0;
     private float triggerTime = 30.0f;
     protected virtual void Awake()

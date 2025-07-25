@@ -10,6 +10,7 @@ public class DialogueHandler : MonoBehaviour
     [SerializeField] private TextMeshProUGUI NameText;
     [SerializeField] private TextMeshProUGUI DialogueText;
 
+    public bool isDialogueOpen = false;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class DialogueHandler : MonoBehaviour
         DialogueUI.gameObject.SetActive(true);
         NameText.gameObject.SetActive(true);
         DialogueText.gameObject.SetActive(true);
+        isDialogueOpen = true;
     }
     public void ShowDialogue(string name, string dialogue)
     {
@@ -33,5 +35,6 @@ public class DialogueHandler : MonoBehaviour
         DialogueUI.gameObject.SetActive(false);
         NameText.gameObject.SetActive(false);
         DialogueText.gameObject.SetActive(false);
+        isDialogueOpen = false;
     }
 }

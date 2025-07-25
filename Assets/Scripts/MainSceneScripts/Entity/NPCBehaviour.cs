@@ -14,9 +14,7 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
     private Image textImage;
     private int currentDialogueIndex = 0;
     [SerializeField] private int NPCID;
-    [SerializeField] private Transform player;
     [SerializeField] private NPCType type;
-
 
     bool isPlayerInRange = false;
     public void Interact()
@@ -98,7 +96,10 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
     {
         if (collision.CompareTag("Player"))
         {
-            DisableDialogueInterface();
+            if (UIManager.Instance.DialogueHandler.isDialogueOpen)
+            {
+                DisableDialogueInterface();
+            }
             isPlayerInRange = false;
             if (textImage != null)
             {

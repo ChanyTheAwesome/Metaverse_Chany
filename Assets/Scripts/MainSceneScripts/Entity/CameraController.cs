@@ -1,31 +1,50 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
     public Transform target;
+    private bool targetNotFound = true;
     float offSetX;
     float offSetY;
-    void Start()
+
+    private void FindTarget()
     {
-        if(target == null)
+        GameObject player = GameManager.Instance.SendPlayer();
+        if(player == null)
         {
             return;
         }
+        else
+        {
+            target = player.transform;
+            SetOffSet();
+        }
+    }
+    private void SetOffSet()
+    {
         offSetX = transform.position.x - target.position.x;
         offSetY = transform.position.y - target.position.y;
+        targetNotFound = false;
     }
-
     void Update()
     {
-        if(target == null)
+        if (targetNotFound)
         {
-            return;
+            FindTarget();
         }
-        Vector3 pos = transform.position;
-        pos.x = target.position.x + offSetX;
-        pos.y = target.position.y + offSetY;
-        transform.position = pos;
+        else
+        {
+            if (target == null)
+            {
+                return;
+            }
+            Vector3 pos = transform.position;
+            pos.x = target.position.x + offSetX;
+            pos.y = target.position.y + offSetY;
+            transform.position = pos;
+        }
     }
 }
