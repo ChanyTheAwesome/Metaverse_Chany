@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 1743746390433562956}
   - component: {fileID: 903758365204875879}
   m_Layer: 7
-  m_Name: NPC_Manager_0
+  m_Name: NPC_Manager_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -328,7 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884f26566a27f3a4783c39ae023cd1a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  NPCID: 101
+  NPCID: 103
   type: 0
 --- !u!1 &6926744856412517142
 GameObject:
@@ -341,7 +341,6 @@ GameObject:
   - component: {fileID: 193912222073247776}
   - component: {fileID: 2297081635042016442}
   - component: {fileID: 1847809499546873535}
-  - component: {fileID: 7992495956312810791}
   m_Layer: 7
   m_Name: MainSprite
   m_TagString: Untagged
@@ -461,27 +460,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 0.81536627}
   m_EdgeRadius: 0
---- !u!95 &7992495956312810791
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6926744856412517142}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2ae09216e1f99a940a930713e0b5d7a9, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6981878762947231289
 GameObject:
   m_ObjectHideFlags: 0

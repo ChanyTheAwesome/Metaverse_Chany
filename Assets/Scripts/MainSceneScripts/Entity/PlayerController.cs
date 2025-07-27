@@ -6,11 +6,24 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : BaseController
 {
-    public void Init()
+    [SerializeField] GameObject Egg;
+    public GameObject Ride;
+    private float cooldown = 1.0f;
+    private void Init()
     {
-
+        if (GameManager.Instance.isPlayerOnRide)
+        {
+            Ride.SetActive(true);
+        }
+        else
+        {
+            Ride.SetActive(false);
+        }
     }
-
+    private void Start()
+    {
+        Init();
+    }
     public override void Death()
     {
         base.Death();
@@ -20,5 +33,37 @@ public class PlayerController : BaseController
     {
         movementDirection = inputValue.Get<Vector2>();
         movementDirection = movementDirection.normalized;//InputValue의 벡터를 정해준다.
+    }
+    void OnFire(InputValue inputValue)
+    {
+        if (GameManager.Instance.enableAttack && cooldown < 0)
+        {
+            cooldown = 1.0f;
+            GameObject origin = Egg;
+            GameObject projectile = Instantiate(origin, transform.position, Quaternion.identity);
+            projectile.GetComponent<ProjectileController>().Init();
+        }
+    }
+    void OnRide(InputValue inputValue)
+    {
+        if (GameManager.Instance.isPlayerGotRide)
+        {
+            GameManager.Instance.isPlayerOnRide = !GameManager.Instance.isPlayerOnRide;
+            if (GameManager.Instance.isPlayerOnRide)
+            {
+                Ride.SetActive(true);
+            }
+            else
+            {
+                Ride.SetActive(false);
+            }
+        }
+    }
+    private void Update()
+    {
+        if (cooldown > 0)
+        {
+            cooldown -= Time.deltaTime;
+        }
     }
 }

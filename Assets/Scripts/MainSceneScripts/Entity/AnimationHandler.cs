@@ -42,6 +42,7 @@ public class AnimationHandler : MonoBehaviour
         lastAnimInteger = direction;
         triggerTime = 30.0f;
         animator.SetBool(SpecialIdle, false);
+        GameManager.Instance.playerDirection = direction;
     }
     public void Move(Vector2 obj)
     {

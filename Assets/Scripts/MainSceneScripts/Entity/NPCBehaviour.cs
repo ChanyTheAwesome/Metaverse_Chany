@@ -7,19 +7,19 @@ using UnityEngine.UI;
 public enum NPCType
 {
     Dialogue,
-    SceneChange
+    SceneChange,
+    Puzzle
 }
 public class NPCBehaviour : MonoBehaviour, IInteractable
 {
     private Image textImage;
     private int currentDialogueIndex = 0;
-    [SerializeField] private int NPCID;
+    [SerializeField] protected int NPCID;
     [SerializeField] private NPCType type;
 
     bool isPlayerInRange = false;
     public void Interact()
     {
-        textImage.gameObject.SetActive(false);
         switch (type)
         {
             case NPCType.Dialogue:
@@ -29,6 +29,10 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
             case NPCType.SceneChange:
                 textImage.gameObject.SetActive(false);
                 SceneChange();
+                break;
+            case NPCType.Puzzle:
+                textImage.gameObject.SetActive(false);
+                this.gameObject.GetComponent<PuzzleNPCBehaviour>().PuzzleInteract();
                 break;
         }
     }
@@ -58,6 +62,7 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
         }
         if (currentDialogueIndex > dialogues.Length)
         {
+            ExceptionCheck();
             DisableDialogueInterface();
             textImage.gameObject.SetActive(true);
         }
@@ -67,14 +72,25 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
         UIManager.Instance.DialogueHandler.FinishDialogue();
         currentDialogueIndex = 0;
     }
-    void Start()
+    private void Start()
+    {
+        Init();
+    }
+    protected virtual void Init()
     {
         textImage = GetComponentInChildren<Image>();
         textImage.gameObject.SetActive(false);
     }
-
-    void Update()
+    private void ExceptionCheck()
     {
+        if (NPCID == 102)
+        {
+            GameManager.Instance.enableAttack = true;
+            GameManager.Instance.CallChangeNPC(2);
+        }
+    }
+    public virtual void Update()
+    {   
         if (isPlayerInRange && Input.GetKeyDown(KeyCode.F))
         {
             Interact();

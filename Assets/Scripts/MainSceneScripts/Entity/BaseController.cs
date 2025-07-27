@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class BaseController : MonoBehaviour
@@ -44,7 +45,12 @@ public class BaseController : MonoBehaviour
 
     private void Movement(Vector2 direction)
     {
-        direction = direction * 3.0f; // 받아온 direction에 speed만큼 이동, 적은 EnemyController의 handleAction에, Player는 OnMove에 지정되어있음.
+        float speed = 3.0f;
+        if (GameManager.Instance.isPlayerOnRide)
+        {
+            speed += 5.0f;
+        }
+        direction = direction * speed; // 받아온 direction에 speed만큼 이동, 적은 EnemyController의 handleAction에, Player는 OnMove에 지정되어있음.
         _rigidbody.velocity = direction; // 물리 연산을 하는 rigidbody의 velocity에 direction을 넣어줌
         animationhandler.Move(direction); // 이동 애니메이션 키세요 라는 뜻
     }

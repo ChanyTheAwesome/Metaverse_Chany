@@ -10,10 +10,11 @@ public class ManagerNPCController : MonoBehaviour
     {
         SetIndex();
         CreateNPCWithIndex();
+        GameManager.Instance.SendNPCManagerToGM(this);
     }
     private void SetIndex()
     {
-        if(GameManager.Instance.bestScore >= 20)
+        if(GameManager.Instance.bestScore >= 1)
         {
             NPCIndex = 1;
         }
