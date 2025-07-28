@@ -56,6 +56,7 @@ public class ManagerNPCController : MonoBehaviour
     }
     private IEnumerator showMultipleDialogue()
     {
+        UIManager.Instance.FadeToWhite();
         cam.GetComponent<CameraController>().ChangeSize(5.5f);
         yield return StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "던지지", 1.5f));
         cam.GetComponent<CameraController>().ChangeSize(4.0f);
