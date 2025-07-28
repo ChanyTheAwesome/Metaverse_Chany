@@ -44,8 +44,7 @@ public class ProjectileController : MonoBehaviour
         }
         else if(((1 << collision.gameObject.layer) & targetLayer) != 0)
         {
-            GameManager.Instance.NPCHit++;
-            Debug.Log(GameManager.Instance.NPCHit);
+            collision.gameObject.GetComponentInParent<ManagerNPCController>().NPCHIT();
             Destroy(this.gameObject);
         }
     }

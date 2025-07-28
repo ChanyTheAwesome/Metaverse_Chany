@@ -5,6 +5,7 @@ using UnityEngine;
 public class ManagerNPCController : MonoBehaviour
 {
     public int NPCIndex;
+    private int hitCount;
     [SerializeField] private GameObject[] NPCPrefabs;
     private void Start()
     {
@@ -34,5 +35,28 @@ public class ManagerNPCController : MonoBehaviour
         GameObject NPC = transform.GetChild(0).gameObject;
         Destroy(NPC);
         CreateNPCWithIndex();
+    }
+
+    public void NPCHIT()
+    {
+        hitCount++;
+        switch (hitCount)
+        {
+            case 1:
+                StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "아야!", 3.0f));
+                break;
+            case 2:
+                StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "던지지 마세요.", 3.0f));
+                break;
+            case 3:
+                StartCoroutine(showMultipleDialogue());
+                break;
+        }
+    }
+    private IEnumerator showMultipleDialogue()
+    {
+        yield return StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "던지지", 1.5f));
+        yield return StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "말라고", 1.5f));
+        yield return StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "했을텐데요.", 1.5f));
     }
 }

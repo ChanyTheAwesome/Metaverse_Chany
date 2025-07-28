@@ -37,4 +37,12 @@ public class DialogueHandler : MonoBehaviour
         DialogueText.gameObject.SetActive(false);
         isDialogueOpen = false;
     }
+    public IEnumerator ShowDialogueXseconds(string name, string text, float time)
+    {
+        StartDialogue();
+        NameText.text = name.ToString();
+        DialogueText.text = text.ToString();
+        yield return new WaitForSeconds(time);
+        FinishDialogue();
+    }
 }

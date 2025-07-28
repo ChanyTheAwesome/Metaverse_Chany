@@ -12,7 +12,6 @@ public class GameManager : MonoBehaviour
     public int bestScore;
     GameObject player;
     public int playerDirection;
-    public int NPCHit;
     public bool enableAttack;
     public bool isPlayerGotRide;
     public bool isPlayerOnRide;
@@ -31,7 +30,6 @@ public class GameManager : MonoBehaviour
         isPlayerGotRide = false;
         isPlayerOnRide = false;
         enableAttack = false;
-        NPCHit = 0;
         bestScore = 0;
         characterIndex = CharacterDataHolder.SendCharacterIndex();
         CharacterDataHolder.destroythis = true;
