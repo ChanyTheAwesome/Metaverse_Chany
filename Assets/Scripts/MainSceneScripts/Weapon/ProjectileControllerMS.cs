@@ -5,7 +5,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Android;
 
-public class ProjectileController : MonoBehaviour
+public class ProjectileControllerMS : MonoBehaviour
 {
     [SerializeField] private LayerMask levelCollisionLayer;
     [SerializeField] private LayerMask targetLayer;

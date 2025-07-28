@@ -5,11 +5,11 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class ResourceManager : MonoBehaviour
+public class ResourceManagerMS : MonoBehaviour
 {
     private string NPCpath;
-    private static ResourceManager instance;
-    public static ResourceManager Instance {  get { return instance; } }
+    private static ResourceManagerMS instance;
+    public static ResourceManagerMS Instance {  get { return instance; } }
 
     public Dictionary<int, NPCData> NPCDict = new Dictionary<int, NPCData>();
     private void Awake()

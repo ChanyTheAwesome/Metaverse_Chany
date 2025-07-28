@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class UIManager : MonoBehaviour
+public class UIManagerMS : MonoBehaviour
 {
-    private static UIManager instance;
-    public static UIManager Instance { get { return instance; } }
+    private static UIManagerMS instance;
+    public static UIManagerMS Instance { get { return instance; } }
 
     [SerializeField] private Image whiteFade;
 

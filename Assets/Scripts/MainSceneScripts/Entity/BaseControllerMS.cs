@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class BaseController : MonoBehaviour
+public class BaseControllerMS : MonoBehaviour
 {
     protected Rigidbody2D _rigidbody;
 
@@ -14,33 +14,18 @@ public class BaseController : MonoBehaviour
     protected Vector2 movementDirection = Vector2.zero;
     public Vector2 MovementDirection { get { return movementDirection; } }
 
-    protected AnimationHandler animationhandler;
+    protected AnimationHandlerMS animationhandler;
 
 
     protected virtual void Awake()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        animationhandler = GetComponent<AnimationHandler>();
-    }
-
-    protected virtual void Start()
-    {
-
-    }
-
-    protected virtual void Update()
-    {
-        HandleAction();
+        animationhandler = GetComponent<AnimationHandlerMS>();
     }
 
     protected virtual void FixedUpdate()
     {
         Movement(movementDirection);
-    }
-
-    protected virtual void HandleAction()
-    {
-
     }
 
     private void Movement(Vector2 direction)

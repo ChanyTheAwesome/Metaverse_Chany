@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class AnimationHandler : MonoBehaviour
+public class AnimationHandlerMS : MonoBehaviour
 {
 
     private static readonly int IsMoving = Animator.StringToHash("IsMoving");

@@ -38,7 +38,7 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
     }
     private void SceneChange()
     {
-        SceneManager.LoadScene(ResourceManager.Instance.NPCDict[NPCID].sceneName);
+        SceneManager.LoadScene(ResourceManagerMS.Instance.NPCDict[NPCID].sceneName);
     }
     private void StartDialogue()
     {
@@ -46,17 +46,17 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
     }
     private void Dialogue(int index)
     {
-        string NPCName = ResourceManager.Instance.NPCDict[NPCID].name;
-        string[] dialogues = ResourceManager.Instance.NPCDict[NPCID].dialogues;
+        string NPCName = ResourceManagerMS.Instance.NPCDict[NPCID].name;
+        string[] dialogues = ResourceManagerMS.Instance.NPCDict[NPCID].dialogues;
 
-        UIManager.Instance.DialogueHandler.StartDialogue();
+        UIManagerMS.Instance.DialogueHandler.StartDialogue();
         if (currentDialogueIndex <= dialogues.Length)
         {
             if (currentDialogueIndex < dialogues.Length)
             {
                 int best_score = PlayerPrefs.GetInt("LocalBestScore");
                 string parsedDialogue = dialogues[currentDialogueIndex];
-                UIManager.Instance.DialogueHandler.ShowDialogue(NPCName, parsedDialogue);
+                UIManagerMS.Instance.DialogueHandler.ShowDialogue(NPCName, parsedDialogue);
             }
             currentDialogueIndex++;
         }
@@ -69,7 +69,7 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
     }
     void DisableDialogueInterface()
     {
-        UIManager.Instance.DialogueHandler.FinishDialogue();
+        UIManagerMS.Instance.DialogueHandler.FinishDialogue();
         currentDialogueIndex = 0;
     }
     private void Start()
@@ -112,7 +112,7 @@ public class NPCBehaviour : MonoBehaviour, IInteractable
     {
         if (collision.CompareTag("Player"))
         {
-            if (UIManager.Instance.DialogueHandler.isDialogueOpen)
+            if (UIManagerMS.Instance.DialogueHandler.isDialogueOpen)
             {
                 DisableDialogueInterface();
             }

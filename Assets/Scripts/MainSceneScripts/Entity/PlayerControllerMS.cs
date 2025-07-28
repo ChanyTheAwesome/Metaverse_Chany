@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
-public class PlayerController : BaseController
+public class PlayerControllerMS : BaseControllerMS
 {
     [SerializeField] GameObject Egg;
     public GameObject Ride;
@@ -41,7 +41,7 @@ public class PlayerController : BaseController
             cooldown = 1.0f;
             GameObject origin = Egg;
             GameObject projectile = Instantiate(origin, transform.position, Quaternion.identity);
-            projectile.GetComponent<ProjectileController>().Init();
+            projectile.GetComponent<ProjectileControllerMS>().Init();
         }
     }
     void OnRide(InputValue inputValue)
