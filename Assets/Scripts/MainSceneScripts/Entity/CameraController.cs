@@ -23,6 +23,10 @@ public class CameraController : MonoBehaviour
             SetOffSet();
         }
     }
+    public void ChangeSize(float size)
+    {
+        this.GetComponent<Camera>().orthographicSize = size;
+    }
     private void SetOffSet()
     {
         offSetX = transform.position.x - target.position.x;

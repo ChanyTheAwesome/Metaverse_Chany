@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ManagerNPCController : MonoBehaviour
 {
+    [SerializeField] private Camera cam;
     public int NPCIndex;
     private int hitCount;
     [SerializeField] private GameObject[] NPCPrefabs;
@@ -55,8 +56,11 @@ public class ManagerNPCController : MonoBehaviour
     }
     private IEnumerator showMultipleDialogue()
     {
+        cam.GetComponent<CameraController>().ChangeSize(5.5f);
         yield return StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "던지지", 1.5f));
+        cam.GetComponent<CameraController>().ChangeSize(4.0f);
         yield return StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "말라고", 1.5f));
+        cam.GetComponent<CameraController>().ChangeSize(3.0f);
         yield return StartCoroutine(UIManager.Instance.DialogueHandler.ShowDialogueXseconds("매니저님", "했을텐데요.", 1.5f));
     }
 }

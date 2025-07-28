@@ -33473,6 +33473,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec04a731bd361764785552866f6daad8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 519420031}
   NPCIndex: 0
   NPCPrefabs:
   - {fileID: 5642369300377607340, guid: 0aabfaf36b348424baf3c1847a21d566, type: 3}
@@ -49803,7 +49804,6 @@ MonoBehaviour:
   ManagerNPCController: {fileID: 368868282}
   bestScore: 0
   playerDirection: 0
-  NPCHit: 0
   enableAttack: 0
   isPlayerGotRide: 0
   isPlayerOnRide: 0
